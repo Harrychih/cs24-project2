@@ -9,6 +9,7 @@ int main () {
 
 	word* head = NULL;
 	add_new_word(head,"apple","test1.txt");
+	cout << "******" << endl;
 	add_new_word(head,"apple","test2.txt");
 	add_new_word(head,"apple","test2.txt");
 	add_new_word(head,"apple","test1.txt");

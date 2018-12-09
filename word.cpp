@@ -75,7 +75,9 @@ void add_new_word(word*& word_head, string n_name, string f_name)
 		string temp_string = temp_word->get_name();
 		if (temp_string == n_name)
 		{
+			cout<<"*****";
 			temp_word->update_count(f_name);
+
 			return;
 		}
 		else if (temp_string.compare(n_name) > 0)
@@ -87,10 +89,11 @@ void add_new_word(word*& word_head, string n_name, string f_name)
 			temp_word->w_set_prev(new_word);
 			new_word->w_set_next(temp_word);
 			new_word->w_set_prev(temp_word->w_prev());
+
 			if(temp_word->w_prev() != NULL)
 				(temp_word->w_next())->w_set_prev(new_word);
 			else
-				word_head = new word;
+				word_head = new_word;
 			
 
 
