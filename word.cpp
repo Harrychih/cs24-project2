@@ -71,7 +71,7 @@ void add_new_word(word*& word_head, string n_name, string f_name)
 	word* temp_word;
 	temp_word = word_head;
 	word* tail;
-	if (temp_head == NULL)
+	if (word_head == NULL)
 	{
 		word* new_word;
 		new_word = new word;
