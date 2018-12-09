@@ -5,7 +5,7 @@
 #include <string>
 #include <iostream>
 #include <fstream>
-#include "wordsearchcount.h"
+#include "wordsearchunion.h"
 
 using namespace std;
 
@@ -45,8 +45,11 @@ int main(int argc, char* argv[])
       cout << "Error opening " << dir << "; Exiting ..." << endl;
       return(-2);
     }
-  
-
+  string input_word1, input_word2;
+  cout << "Enter word1: ";
+  cin >> input_word1;
+  cout << "Enter word2: ";
+  cin >> input_word1;
   string slash("/");
   for (unsigned int i = 0;i < files.size();i++) {
     if(files[i][0]=='.')continue; //skip hidden files
@@ -60,24 +63,22 @@ int main(int argc, char* argv[])
       else{
       // Now the string "word" holds the keyword, and the string "files[i]" holds the document name.
       // Use these two strings to search/insert in your array/list of words.
-      add_new_word(vocab_head, word, files[i]); 
+        if((word == input_word1)||word == input_word2)
+          add_new_word(vocab_head, word, files[i]);
       }
     }
     fin.close();
   }
-    string input_word1, input_word2;
-    cout << "Enter word1:";
-    cin >> input_word1;
-    cout << "Enter threshold: ";
-    cin >> input_word2;
-    
-    
- 
-    cout << "---Program exits" << endl;
-
-    return 0;
+  list* word_head;
+  word_head = vocab_head->w_head();
+  while(word_head != NULL)
+  {
+    cout << word_head->data_filename() << endl;
+    word_head = word_head->next();
   }
-
+  cout << "---Program exits" << endl;
+  return 0;
+  }
 
 
 

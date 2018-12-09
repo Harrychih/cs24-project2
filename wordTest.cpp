@@ -55,18 +55,10 @@ int main () {
 
 	word* temp;
 	temp = head;
-	list* temp_l;
-	list* l;
 	while (temp)
 	{
-		l=temp->w_head();
-		temp_l=l;
-		cout << "word" << temp->get_name()<<endl;
-		while(temp_l)
-		{
-			cout << "file: " <<temp_l->data_filename() << "; count:" << temp_l->data_count() <<endl;
-			temp_l = temp_l->next();
-		}
+		cout << "word: " << temp->get_name()<<endl;
+		temp->print_word();
 		cout << "end of the word" << endl;
 		temp = temp->w_next();
 	}

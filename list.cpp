@@ -105,13 +105,18 @@ void print (list* src)
 
 void list_print (list* head)
 {
-	list* head_ptr;
-	head_ptr = new list;
-	head_ptr = head;
-	while (head_ptr != NULL)
+	if (head == NULL)
+		return;
+	else
 	{
-		print(head_ptr);
-		head_ptr = head_ptr->next();
+		list* head_ptr;
+		head_ptr = new list;
+		head_ptr = head->next();
+		while (head_ptr != NULL)
+		{
+			print(head_ptr);
+			head_ptr = head_ptr->next();
+		}
 	}
 	return;
 }
@@ -161,23 +166,26 @@ void countPlus(list*& head, string file_name)
 	{
 		new_file->set_next(NULL);
 		head = new_file;
+		return;
 	}
 	else if (head->next()==NULL)
 	{
 		head->set_next(new_file);
 		new_file->set_prev(head);
 		new_file->set_next(NULL);
+		return;
 	}
 	else
 	{
-		new_file->set_next(head->next(	));
+		new_file->set_next(head->next());
 		(head->next())->set_prev(new_file);
 		head->set_next(new_file);
 		new_file->set_prev(head);
+		return;
 	}
 
 
-	return;
+
 }
 
 

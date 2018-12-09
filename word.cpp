@@ -45,11 +45,8 @@ void word::print_word() const
 {
 	list* word_print;
 	word_print = head;
-	while (word_print != NULL)
-	{
-		list_print(word_print);
-		word_print = word_print->next();
-	}
+	list_print(word_print);
+
 	return;
 }
 
@@ -87,9 +84,7 @@ void add_new_word(word*& word_head, string n_name, string f_name)
 			string temp_string = temp_word->get_name();
 			if (temp_string == n_name)
 			{
-				cout<<"*****";
 				temp_word->update_count(f_name);
-
 				return;
 			}
 			else if (temp_string.compare(n_name) > 0)
@@ -98,16 +93,19 @@ void add_new_word(word*& word_head, string n_name, string f_name)
 				word* new_word;
 				new_word = new word;
 				new_word->set_name(n_name);
+				new_word->update_count(f_name);
 				temp_word->w_set_prev(new_word);
 				new_word->w_set_next(temp_word);
-				new_word->w_set_prev(temp_word->w_prev());
+				
 
 				if(temp_word->w_prev() != NULL)
+				{
+					new_word->w_set_prev(temp_word->w_prev());
 					(temp_word->w_prev())->w_set_next(new_word);
+				}
 				else
 					word_head = new_word;
 
-				new_word->update_count(f_name);
 				return;
 			}
 			if (temp_word->w_next() == NULL)
@@ -117,7 +115,6 @@ void add_new_word(word*& word_head, string n_name, string f_name)
 			temp_word = temp_word->w_next();
 
 		}
-		cout << tail->get_name() << endl;
 		word* tail_new_word;
 		tail_new_word = new word;
 		tail_new_word->set_name(n_name);

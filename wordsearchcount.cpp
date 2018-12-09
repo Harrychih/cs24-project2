@@ -45,57 +45,45 @@ int main(int argc, char* argv[])
       cout << "Error opening " << dir << "; Exiting ..." << endl;
       return(-2);
     }
-  
-
+  string input_word1, input_word2;
+  cout << "Enter word1:";
+  cin >> input_word1;
+  cout << "Enter word2:";
+  cin >> input_word2;
   string slash("/");
   for (unsigned int i = 0;i < files.size();i++) {
     if(files[i][0]=='.')continue; //skip hidden files
     ifstream fin((string(argv[1])+slash+files[i]).c_str()); //open using absolute path
     // ...read the file...
-    string words;
-    words = "";
+    string word;
+    word = "";
     while(true){
-      fin>>words;
+      fin>>word;
       if (fin.eof()) {break;}
       else{
       // Now the string "word" holds the keyword, and the string "files[i]" holds the document name.
       // Use these two strings to search/insert in your array/list of words.
-      add_new_word(vocab_head, words, files[i]); 
+      add_new_word(vocab_head, word, files[i]); 
       }
     }
     fin.close();
   }
-    string input_word;
-    int input_thre;
+
+    int temp = 0;
     while (input_word != (std::to_string(-1)))
     {
-    	int temp = 0;
-    	cout << "Enter word: ";
-    	cin >> input_word;
-      cout << "Enter threshold: ";
-      cin >> input_thre;
-  
       while (vocab_head != NULL)
       {
         if (vocab_head->get_name() == input_word)
         {
-          if ((vocab_head->w_head()->data_count()) < input_thre)
-          {
-            temp = 1;
-            break;
-          }
-          else
-          {
-            vocab_head->print_word();
-            temp = 1;
+          
           }
         }
-        else
           vocab_head = vocab_head->w_next();
       }
-      if (temp == 0)
-    		cout << "Word not found" << endl;
     }
+    if (temp == 0)
+      cout << "Word not found" << endl;
     if (input_word == (std::to_string(-1)))
     {
     	cout << "---Program exits" << endl;
