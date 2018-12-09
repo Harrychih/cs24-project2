@@ -70,6 +70,7 @@ void add_new_word(word*& word_head, string n_name, string f_name)
 {
 	word* temp_word;
 	temp_word = word_head;
+	word* tail;
 	while (temp_word != NULL)
 	{
 		string temp_string = temp_word->get_name();
@@ -101,21 +102,18 @@ void add_new_word(word*& word_head, string n_name, string f_name)
 			return;
 		}
 		else
+			if (temp_word->w_next() == NULL)
+			{
+				tail = temp_word;
+			}
 			temp_word = temp_word->w_next();
 
-	}
-	int len = w_length(word_head);
-	word* temp_ptr;
-	temp_ptr = word_head;
-	for (int i = 0; i < (len-1); i++)
-	{
-		temp_ptr = temp_ptr->w_next();
 	}
 	word* tail_new_word;
 	tail_new_word = new word;
 	tail_new_word->set_name(n_name);
-	temp_ptr->w_set_next(tail_new_word);
-	tail_new_word->w_set_prev(temp_ptr);
+	tail->w_set_next(tail_new_word);
+	tail_new_word->w_set_prev(tail);
 	tail_new_word->w_set_next(NULL);
 	
 	tail_new_word->update_count(f_name);
