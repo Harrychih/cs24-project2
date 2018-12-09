@@ -11,7 +11,9 @@ int main () {
 	add_new_word(head,"apple","test1.txt");
 	cout << "******" << endl;
 	add_new_word(head,"apple","test2.txt");
+	cout << "=======" << endl;
 	add_new_word(head,"apple","test2.txt");
+	cout << "-------" << endl;
 	add_new_word(head,"apple","test1.txt");
 	add_new_word(head,"apple","test1.txt");
 
