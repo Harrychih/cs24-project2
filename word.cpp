@@ -103,7 +103,7 @@ void add_new_word(word*& word_head, string n_name, string f_name)
 				new_word->w_set_prev(temp_word->w_prev());
 
 				if(temp_word->w_prev() != NULL)
-					(temp_word->w_next())->w_set_prev(new_word);
+					(temp_word->w_prev())->w_set_next(new_word);
 				else
 					word_head = new_word;
 
