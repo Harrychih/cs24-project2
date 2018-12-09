@@ -101,14 +101,14 @@ void add_new_word(word*& word_head, string n_name, string f_name)
 			new_word->update_count(f_name);
 			return;
 		}
-		else
-			if (temp_word->w_next() == NULL)
-			{
-				tail = temp_word;
-			}
-			temp_word = temp_word->w_next();
+		if (temp_word->w_next() == NULL)
+		{
+			tail = temp_word;
+		}
+		temp_word = temp_word->w_next();
 
 	}
+	cout << tail->get_name() << endl;
 	word* tail_new_word;
 	tail_new_word = new word;
 	tail_new_word->set_name(n_name);
